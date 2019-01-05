@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<div class="block1">
+    <p>Number1:<input type="text" id="in1"></p>
+    <p>Number2:<input type="text" id="in2"></p>
+    <button onclick="plus()">Plus</button>
+    <button onclick="minus()">Minus</button>
+    <button onclick="multiplication()">Multiplication</button>
+    <button onclick="divisionFun()">Division</button>
+    <p id="res1">Result:</p>
+</div>
+<div class="block2">
+    <p>Sinus:<input type="text" id="sinnumb"></p>
+    <button onclick="sinFun()">Calculate</button>
+    <p>Cosinus:<input type="text" id="cosnumb"></p>
+    <button onclick="cosFun()">Calculate</button>
+    <p id="res2">Result:</p>
+</div>
+
+<div class="block3">
+    <p>Number:<input type="text" id="pow1"></p>
+    <p>Power:<input type="text" id="pow2"></p>
+    <button onclick="powerFun()">Power</button>
+    <p id="res3">Result:</p>
+</div>
+<div class="block4">
+    <p>Root number:<input type="text" id="sqrt1"></p>
+    <button onclick="sqrtFun()">Calculate</button>
+    <p id="res4">Result:</p>
+</div>
+<div class="block5">
+    <p>Factorial:<input type="text" id="fa-al1"></p>
+    <button onclick="factorialFun()">Calculate</button>
+    <p id="res5">Result:</p>
+</div>
+
+<style>
+    .block1 {
+        border: 2px solid #17a2b8;
+        background: #9fcdff;
+        padding: 10px;
+        text-align: center;
+        color: #002752;
+        font-size: 30px;
+    }
+
+    .block1 button {
+        border-radius: 10px;
+        border: 2px solid #111111;
+        background: #34ce57;
+        color: white;
+        transition: 0.5s;
+        margin: 10px;
+    }
+
+    .block1 button:hover {
+        background: #1e7e34;
+        color: #111111;
+    }
+
+    .block2 {
+        border: 2px solid #17a2b8;
+        background: #f5c6cb;
+        padding: 10px;
+        text-align: center;
+        color: #002752;
+        font-size: 30px;
+    }
+
+    .block2 button {
+        border-radius: 10px;
+        border: 2px solid #111111;
+        background: #34ce57;
+        color: white;
+        transition: 0.5s;
+        margin: 10px;
+    }
+
+    .block2 button:hover {
+        background: #1e7e34;
+        color: #111111;
+    }
+
+    .block3 {
+        border: 2px solid #17a2b8;
+        background: #20c997;
+        padding: 10px;
+        text-align: center;
+        color: #002752;
+        font-size: 30px;
+    }
+
+    .block3 button {
+        border-radius: 10px;
+        border: 2px solid #111111;
+        background: #34ce57;
+        color: white;
+        transition: 0.5s;
+        padding: 10px;
+    }
+
+    .block3 button:hover {
+        background: #1e7e34;
+        color: #111111;
+    }
+
+    .block4 {
+        border: 2px solid #17a2b8;
+        background: #6f42c1;
+        padding: 10px;
+        text-align: center;
+        color: #002752;
+        font-size: 30px;
+    }
+
+    .block4 button {
+        border-radius: 10px;
+        border: 2px solid #111111;
+        background: #34ce57;
+        color: white;
+        transition: 0.5s;
+        padding: 10px;
+    }
+
+    .block4 button:hover {
+        background: #1e7e34;
+        color: #111111;
+    }
+
+    .block5 {
+        border: 2px solid #17a2b8;
+        background: #d39e00;
+        padding: 10px;
+        text-align: center;
+        color: #002752;
+        font-size: 30px;
+    }
+
+    .block5 button {
+        border-radius: 10px;
+        border: 2px solid #111111;
+        background: #34ce57;
+        color: white;
+        transition: 0.5s;
+        padding: 10px;
+    }
+
+    .block5 button:hover {
+        background: #1e7e34;
+        color: #111111;
+    }
+</style>
+<script>
+  function plus () {
+    var n1, n2, result
+    n1 = document.getElementById('in1').value
+    n1 = parseInt(n1)
+
+    n2 = document.getElementById('in2').value
+    n2 = parseInt(n2)
+
+    result = n1 + n2
+
+    document.getElementById('res1').innerHTML = result
+  }
+
+  function minus () {
+    var n1, n2, result
+    n1 = document.getElementById('in1').value
+    n1 = parseInt(n1)
+
+    n2 = document.getElementById('in2').value
+    n2 = parseInt(n2)
+
+    result = n1 - n2
+
+    document.getElementById('res1').innerHTML = result
+  }
+
+  function multiplication () {
+    var n1, n2, result
+    n1 = document.getElementById('in1').value
+    n1 = parseInt(n1)
+
+    n2 = document.getElementById('in2').value
+    n2 = parseInt(n2)
+
+    result = n1 * n2
+
+    document.getElementById('res1').innerHTML = result
+  }
+
+  function divisionFun () {
+    var n1, n2, result
+    n1 = document.getElementById('in1').value
+    n1 = parseInt(n1)
+
+    n2 = document.getElementById('in2').value
+    n2 = parseInt(n2)
+
+    result = n1 / n2
+
+    if (n1 === 0 || n2 === 0) {
+      alert('Enter the number canceled by zero!')
+    }
+
+    document.getElementById('res1').innerHTML = result
+  }
+
+  function sinFun () {
+    var s1, result
+    s1 = document.getElementById('sinnumb').value
+    s1 = parseInt(s1)
+
+    result = Math.sin(s1)
+
+    document.getElementById('res2').innerHTML = result
+  }
+
+  function cosFun () {
+    var s2, result
+    s2 = document.getElementById('cosnumb').value
+    s2 = parseInt(s2)
+
+    result = Math.cos(s2)
+
+    document.getElementById('res2').innerHTML = result
+  }
+
+  function powerFun (x, n) {
+    var v1, v2, result, i
+    v1 = document.getElementById('pow1').value
+    v1 = parseInt(v1)
+
+    v2 = document.getElementById('pow2').value
+    v2 = parseInt(v2)
+
+    result = 1
+    for (i = 1; i <= v2; i++) {
+      result = result * v1
+    }
+
+    document.getElementById('res3').innerHTML = result
+  }
+
+  function sqrtFun (x) {
+    var m1, result
+    m1 = document.getElementById('sqrt1').value
+    m1 = parseInt(m1)
+
+    result = Math.sqrt(m1)
+
+    document.getElementById('res4').innerHTML = result
+  }
+
+  function factorialFun () {
+
+    var t1, result
+
+    t1 = document.getElementById('fa-al1').value
+    t1 = parseInt(t1)
+
+    function factorial (n) {
+      return (n != 1) ? n * factorial(n - 1) : 1
+    }
+
+    result = factorial(t1)
+
+    document.getElementById('res5').innerHTML = result
+  }
+
+</script>
+<script src="assets/js/libs.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
