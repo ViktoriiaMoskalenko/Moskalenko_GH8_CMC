@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<section>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Список дел</h1>
+            <input type="text" placeholder="Введите новое дело..." id="toDoEl">
+            <span class="addBtn" onclick="newElement()">Добавить</span>
+        </div>
+        <div id="tabs-ul">
+            <ul id="list" onmousedown="move(this)">
+
+            </ul>
+        </div>
+    </div>
+    <div class="tabs">
+        <div class="tabs-header">
+            <div class="tab-h" data-tab="0">Дела1</div>
+            <div class="tab-h" data-tab="1">Дела2</div>
+            <div class="tab-h" data-tab="2">Дела3</div>
+        </div>
+        <div class="tabs-body">
+            <div class="tab-b" style="display: block">Первый текст</div>
+            <div class="tab-b"> Второй текст</div>
+            <div class="tab-b">Третий текст</div>
+        </div>
+    </div>
+</section>
+<script>
+  var list = document.querySelector('ul')
+  var todos
+
+  function toLocal () {
+    todos = list.innerHTML
+    localStorage.setItem('todos', todos)
+  }
+
+  list.addEventListener('click', function (ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.classList.toggle('checked')
+      toLocal()
+    } else if (ev.target.tagName === 'SPAN') {
+      var div = ev.target.parentNode
+      div.remove()
+      toLocal()
+    }
+  }, false)
+
+  function newElement () {
+    var li = document.createElement('li')
+    var inputValue = document.getElementById('toDoEl').value
+    var t = document.createTextNode(inputValue)
+    li.appendChild(t)
+    if (inputValue == '') {
+      alert('Введите ваше дело!')
+    } else {
+      document.getElementById('list').appendChild(li)
+    }
+    document.getElementById('toDoEl').value = ''
+    var span = document.createElement('SPAN')
+    var txt = document.createTextNode('X')
+    span.className = 'close'
+    span.appendChild(txt)
+    li.appendChild(span)
+    toLocal()
+  }
+
+  if (localStorage.getItem('todos')) {
+    list.innerHTML = localStorage.getItem('todos')
+  }
+
+  window.onload = function () {
+    document.querySelector('.tabs-header').addEventListener('click', fTabs)
+
+    function fTabs (event) {
+      console.log(event)
+      if (event.target.className == 'tab-h') {
+        var dataTab = event.target.getAttribute('data-tab')
+        var tabH = document.getElementsByClassName('tab-h')
+        for (var i = 0; i < tabH.length; i++) {
+          tabH[i].classList.remove('active')
+        }
+        event.target.classList.add('active')
+        var tabBody = document.getElementsByClassName('tab-b')
+        for (var i = 0; i < tabBody.length; i++) {
+          if (dataTab == i) {
+            tabBody [i].style.display = 'block'
+          }
+          else {
+            tabBody[i].style.display = 'none'
+          }
+        }
+      }
+    }
+  }
+</script>
+<script src="assets/js/libs.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
